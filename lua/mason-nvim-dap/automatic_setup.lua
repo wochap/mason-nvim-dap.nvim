@@ -10,7 +10,12 @@ return _.memoize(function(config)
 		local configuration = config.configurations or {}
 		if not vim.tbl_isempty(configuration) then
 			for _, filetype in ipairs(config.filetypes) do
-				dap.configurations[filetype] = vim.list_extend(dap.configurations[filetype] or {}, configuration)
+				-- dap.configurations[filetype] = vim.list_extend(dap.configurations[filetype] or {}, configuration)
+				if dap.configurations[filetype] then
+					dap.configurations[filetype] = dap.configurations[filetype]
+				else
+					dap.configurations[filetype] = vim.list_extend({}, configuration)
+				end
 			end
 		end
 	end)
