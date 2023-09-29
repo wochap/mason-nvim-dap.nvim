@@ -12,7 +12,7 @@ return _.memoize(function(config)
 			for _, filetype in ipairs(config.filetypes) do
 				-- dap.configurations[filetype] = vim.list_extend(dap.configurations[filetype] or {}, configuration)
 				if dap.configurations[filetype] then
-					dap.configurations[filetype] = vim.list_extend({}, dap.configurations[filetype])
+					dap.configurations[filetype] = vim.list_extend({}, configuration[filetype])
 				else
 					dap.configurations[filetype] = vim.list_extend({}, configuration)
 				end
